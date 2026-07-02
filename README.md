@@ -1,4 +1,4 @@
-# AI Contract Risk Detector
+# Contract Risk Detector
 
 > **An AI-Powered Contract Analysis System Using FastAPI, React.js, SQLite, OCR, NLP, and Ollama LLM**
 
@@ -6,7 +6,7 @@
 
 # Abstract
 
-The AI Contract Risk Detector is an intelligent web application designed to automate the analysis of legal contracts and identify potential risks. The system extracts text from PDF documents and scanned images using PyPDF2 and Tesseract OCR, processes the extracted content using Natural Language Processing (NLP), detects risky clauses through a rule-based risk engine, and generates AI-powered summaries using Ollama Large Language Models (Phi-4/Llama 3). It also calculates an overall risk score and stores analysis results in an SQLite database. Developed using Python, FastAPI, React.js, SQLite, spaCy, OCR, and Ollama, the system reduces manual effort, improves accuracy, and provides users with a fast and reliable contract analysis solution.
+The Contract Risk Detector is an intelligent web application designed to automate the analysis of legal contracts and identify potential risks. The system extracts text from PDF documents and scanned images using PyPDF2 and Tesseract OCR, processes the extracted content using Natural Language Processing (NLP), detects risky clauses through a rule-based risk engine, and generates AI-powered summaries using Ollama Large Language Models (Phi-4/Llama 3). It also calculates an overall risk score and stores analysis results in an SQLite database. Developed using Python, FastAPI, React.js, SQLite, spaCy, OCR, and Ollama, the system reduces manual effort, improves accuracy, and provides users with a fast and reliable contract analysis solution.
 
 **Keywords:** Artificial Intelligence, Contract Analysis, FastAPI, React.js, SQLite, OCR, NLP, Ollama, Risk Detection, PDF Processing.
 
@@ -302,7 +302,7 @@ Future enhancements include:
 
 # 14. Conclusion
 
-The AI Contract Risk Detector demonstrates how Artificial Intelligence, Natural Language Processing, OCR, and modern web technologies can be integrated to automate legal contract analysis. The application successfully extracts contract text, identifies risky clauses, calculates a risk score, generates AI-powered summaries, and stores analysis results efficiently. The project reduces manual effort while improving the speed and accuracy of contract review, making it suitable for educational purposes and future real-world applications.
+The Contract Risk Detector demonstrates how Artificial Intelligence, Natural Language Processing, OCR, and modern web technologies can be integrated to automate legal contract analysis. The application successfully extracts contract text, identifies risky clauses, calculates a risk score, generates AI-powered summaries, and stores analysis results efficiently. The project reduces manual effort while improving the speed and accuracy of contract review, making it suitable for educational purposes and future real-world applications.
 
 ---
 
@@ -336,6 +336,6 @@ The AI Contract Risk Detector demonstrates how Artificial Intelligence, Natural 
 
 Master of Computer Applications (MCA)
 
-Project: AI Contract Risk Detector
+Project: Contract Risk Detector
 
 Year: 2026
