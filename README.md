@@ -1,290 +1,341 @@
-AI Contract Risk Detector
-An AI-Powered Contract Analysis System Using FastAPI, React.js, SQLite, OCR, NLP, and Large Language Models
+# AI Contract Risk Detector
 
-Abstract
-The AI Contract Risk Detector is an intelligent web-based application developed to automate the analysis of legal contracts and identify potential risks. The system extracts text from PDF and scanned image contracts using PyPDF2 and Tesseract OCR, analyzes the content using Natural Language Processing (NLP) and rule-based risk detection, and generates AI-assisted summaries through Ollama (Phi-4/Llama 3). It identifies important clauses such as penalties, liabilities, termination conditions, deadlines, and hidden fees while assigning a risk score to the contract. The application is built using Python, FastAPI, React.js, SQLite, spaCy, and OCR technologies, providing a simple and efficient platform for contract analysis.
+> **An AI-Powered Contract Analysis System Using FastAPI, React.js, SQLite, OCR, NLP, and Ollama LLM**
 
-Keywords: Artificial Intelligence, Contract Analysis, FastAPI, React.js, OCR, NLP, SQLite, Ollama, Risk Detection.
+---
 
-1. Introduction
-Legal contracts often contain complex language that makes it difficult for individuals and organizations to identify risky clauses. Manual contract review is time-consuming, expensive, and prone to human error.
+# Abstract
 
-The AI Contract Risk Detector is designed to simplify this process by automatically extracting text from contracts, identifying risky clauses, calculating a risk score, and generating an easy-to-understand summary. The project combines Artificial Intelligence, Natural Language Processing, and Optical Character Recognition to improve the efficiency and accuracy of contract analysis.
+The AI Contract Risk Detector is an intelligent web application designed to automate the analysis of legal contracts and identify potential risks. The system extracts text from PDF documents and scanned images using PyPDF2 and Tesseract OCR, processes the extracted content using Natural Language Processing (NLP), detects risky clauses through a rule-based risk engine, and generates AI-powered summaries using Ollama Large Language Models (Phi-4/Llama 3). It also calculates an overall risk score and stores analysis results in an SQLite database. Developed using Python, FastAPI, React.js, SQLite, spaCy, OCR, and Ollama, the system reduces manual effort, improves accuracy, and provides users with a fast and reliable contract analysis solution.
 
-2. Literature Review
-Several existing systems focus on contract management and legal document processing. Traditional methods rely on manual review by legal professionals, which is costly and time-intensive.
+**Keywords:** Artificial Intelligence, Contract Analysis, FastAPI, React.js, SQLite, OCR, NLP, Ollama, Risk Detection, PDF Processing.
 
-Recent advancements in Artificial Intelligence and Natural Language Processing have enabled automated analysis of legal documents. OCR technologies such as Tesseract allow extraction of text from scanned contracts, while language models assist in understanding document context. Frameworks like FastAPI simplify backend development, and React.js provides responsive user interfaces. This project integrates these technologies into a single application for intelligent contract analysis.
+---
 
-3. Methodology
-The proposed system follows the following workflow:
+# 1. Introduction
 
-User uploads a contract in PDF or image format.
+Legal contracts often contain lengthy and complex language that makes manual review difficult and time-consuming. Missing important clauses such as penalties, liabilities, indemnity, or termination conditions can lead to financial and legal consequences.
 
-Text is extracted using PyPDF2 or Tesseract OCR.
+The AI Contract Risk Detector automates this process by extracting text from contracts, identifying risky clauses, assigning a numerical risk score, and generating an AI-powered summary. The system combines Artificial Intelligence, Optical Character Recognition (OCR), Natural Language Processing (NLP), and modern web technologies to provide an efficient contract analysis platform.
 
-Extracted text is processed using spaCy for NLP tasks.
+---
 
-A rule-based engine detects risk-related keywords such as penalties, liabilities, indemnity, termination clauses, and hidden fees.
+# 2. Literature Review
 
-A numerical risk score is calculated.
+Traditional contract review relies heavily on manual analysis performed by legal professionals. Although effective, manual review requires significant time and effort.
 
-The extracted information is stored in an SQLite database.
+Recent advancements in Artificial Intelligence and Natural Language Processing have enabled automatic analysis of legal documents. OCR technologies such as Tesseract can extract text from scanned contracts, while NLP libraries such as spaCy improve text understanding. FastAPI simplifies backend development with high performance, React.js enables responsive user interfaces, and Large Language Models (LLMs) such as Ollama provide intelligent summaries and explanations. This project combines these technologies into a single application for automated contract risk detection.
 
-The contract is summarized using an Ollama Large Language Model (Phi-4/Llama 3).
+---
 
-Results are displayed on a React.js dashboard.
+# 3. Methodology
 
-4. System Architecture
-User
-   │
-   ▼
-React.js Frontend
-   │
-   ▼
-FastAPI Backend
-   │
-   ├───────────────┐
-   ▼               ▼
-PDF Reader      OCR Reader
-(PyPDF2)      (Tesseract OCR)
-   │               │
-   └───────► Text Extraction
-                   │
-                   ▼
-            NLP Processing (spaCy)
-                   │
-                   ▼
-          Risk Detection Engine
-                   │
-         ┌─────────┴─────────┐
-         ▼                   ▼
-   Risk Score         AI Summary (Ollama)
-         │                   │
-         └─────────┬─────────┘
-                   ▼
-             SQLite Database
-                   │
-                   ▼
-            Dashboard Results
-5. Implementation
-Frontend
-React.js
+The system follows the workflow below:
 
-Axios
+1. User uploads a contract (PDF/Image).
+2. FastAPI receives the uploaded file.
+3. PDF text is extracted using PyPDF2.
+4. Image text is extracted using Tesseract OCR.
+5. spaCy processes the extracted text.
+6. Rule-based risk detection identifies important clauses.
+7. Risk score is calculated.
+8. Ollama LLM generates an AI summary.
+9. Results are stored in SQLite.
+10. React Dashboard displays analysis results.
 
-HTML
+---
 
-CSS
+# 4. System Architecture
 
-The frontend provides:
+```
+                User
+                  │
+                  ▼
+          React.js Frontend
+                  │
+                  ▼
+           FastAPI Backend
+                  │
+        ┌─────────┴─────────┐
+        ▼                   ▼
+ PDF Reader           OCR Reader
+ (PyPDF2)            (Tesseract)
+        │                   │
+        └─────────┬─────────┘
+                  ▼
+          Text Extraction
+                  │
+                  ▼
+          NLP Processing
+               (spaCy)
+                  │
+                  ▼
+        Rule-Based Risk Engine
+                  │
+        ┌─────────┴─────────┐
+        ▼                   ▼
+   Risk Score         AI Summary
+                     (Ollama LLM)
+        │                   │
+        └─────────┬─────────┘
+                  ▼
+           SQLite Database
+                  │
+                  ▼
+            Result Dashboard
+```
 
-Contract upload interface
+---
 
-Risk analysis dashboard
+# 5. Project Structure
 
-AI-generated summary
+```
+contract-risk-detector/
+│
+├── backend/
+│   ├── app.py
+│   ├── pdf_reader.py
+│   ├── risk_engine.py
+│   ├── database.py
+│   ├── show_data.py
+│   ├── ocr_reader.py
+│   ├── contracts.db
+│   └── uploads/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── requirements.txt
+├── README.md
+└── venv/
+```
 
-Risk score display
+---
 
-Backend
-Developed using FastAPI.
+# 6. Technologies Used
 
-Responsibilities:
+| Technology | Purpose |
+|------------|---------|
+| Python | Programming Language |
+| FastAPI | Backend Framework |
+| React.js | Frontend Framework |
+| SQLite | Database |
+| PyPDF2 | PDF Text Extraction |
+| Tesseract OCR | Image Text Extraction |
+| Pillow | Image Processing |
+| spaCy | Natural Language Processing |
+| Ollama (Phi-4/Llama 3) | AI Summary Generation |
+| Axios | API Communication |
+| VS Code | Development Environment |
 
-Receive uploaded contracts
+---
 
-Extract document text
+# 7. Implementation
 
-Process risk detection
+## Frontend
 
-Generate AI summary
+The frontend is developed using React.js and provides an interactive interface for uploading contracts, viewing detected risks, AI-generated summaries, and contract scores.
 
-Store results in database
+### Features
 
-Database
+- Contract Upload
+- Risk Dashboard
+- AI Summary Display
+- Risk Score Visualization
+
+---
+
+## Backend
+
+The backend is developed using FastAPI and handles all server-side operations including:
+
+- File Upload
+- PDF Processing
+- OCR Processing
+- Risk Detection
+- AI Summary Generation
+- Database Operations
+
+---
+
+## PDF Processing
+
+PyPDF2 extracts text from PDF contracts.
+
+---
+
+## OCR Module
+
+Tesseract OCR extracts text from scanned contracts and images.
+
+---
+
+## NLP Processing
+
+spaCy is used to preprocess extracted text before analysis.
+
+---
+
+## Risk Detection Engine
+
+The system detects keywords such as:
+
+- Penalty
+- Liability
+- Termination
+- Indemnity
+- Lawsuit
+- Hidden Fees
+- Service Charges
+- Processing Fees
+
+Each detected keyword contributes to the overall risk score.
+
+---
+
+## AI Summary Generation
+
+Ollama LLM (Phi-4/Llama 3) generates a concise summary of the uploaded contract, highlighting important clauses and risks.
+
+---
+
+## Database
+
 SQLite stores:
 
-Contract name
+- Contract Name
+- Upload Date
+- Risk Score
+- AI Summary
 
-Upload date
+---
 
-Risk score
+# 8. Software Requirements
 
-Analysis summary
+- Python 3.10+
+- Node.js
+- React.js
+- FastAPI
+- SQLite
+- PyPDF2
+- spaCy
+- Pillow
+- pytesseract
+- Ollama
+- VS Code
 
-OCR Module
-Implemented using:
+---
 
-Tesseract OCR
+# 9. Hardware Requirements
 
-Pillow
+## Minimum
 
-Used for extracting text from scanned contracts and images.
+- Intel Core i3
+- 4 GB RAM
+- 10 GB Storage
 
-NLP & AI Module
-Technologies:
+## Recommended
 
-spaCy
+- Intel Core i5/i7
+- 8 GB RAM
+- SSD Storage
 
-Ollama
+---
 
-Phi-4 / Llama 3
+# 10. Features
 
-Functions:
+- PDF Contract Upload
+- OCR Support for Scanned Contracts
+- Automatic Text Extraction
+- AI-Powered Contract Summary
+- Clause Detection
+- Hidden Fee Detection
+- Risk Score Calculation
+- SQLite Database Storage
+- FastAPI REST API
+- React Dashboard
 
-Contract summarization
+---
 
-Risk explanation
+# 11. Advantages
 
-Deadline extraction
+- Automates contract analysis
+- Saves review time
+- Detects risky clauses
+- Generates AI summaries
+- Supports scanned contracts
+- Easy-to-use interface
+- Uses free and open-source technologies
 
-Clause identification
+---
 
-Risk Detection
-The rule-based engine identifies keywords including:
+# 12. Limitations
 
-Penalty
+- Current risk detection primarily uses predefined rules.
+- OCR accuracy depends on image quality.
+- AI summary quality depends on the selected language model.
+- SQLite is suitable for small to medium-scale applications.
 
-Liability
+---
 
-Indemnity
+# 13. Future Scope
 
-Lawsuit
+Future enhancements include:
 
-Termination
+- Machine Learning-based risk prediction
+- Multilingual contract analysis
+- Cloud deployment (AWS/Azure)
+- User Authentication
+- Digital Signature Verification
+- Email Notifications
+- Contract Comparison
+- AI Chatbot for Question Answering
+- Retrieval-Augmented Generation (RAG)
+- Vector Database Integration
+- Real-time Collaboration
+- Enterprise Contract Management Integration
 
-Additional Fee
+---
 
-Service Charge
+# 14. Conclusion
 
-Processing Fee
+The AI Contract Risk Detector demonstrates how Artificial Intelligence, Natural Language Processing, OCR, and modern web technologies can be integrated to automate legal contract analysis. The application successfully extracts contract text, identifies risky clauses, calculates a risk score, generates AI-powered summaries, and stores analysis results efficiently. The project reduces manual effort while improving the speed and accuracy of contract review, making it suitable for educational purposes and future real-world applications.
 
-A predefined scoring mechanism generates an overall contract risk score.
+---
 
-6. Software Requirements
-Python 3.10+
+# References
 
-Node.js
+[1] FastAPI Documentation. https://fastapi.tiangolo.com/
 
-React.js
+[2] React Documentation. https://react.dev/
 
-FastAPI
+[3] SQLite Documentation. https://www.sqlite.org/
 
-SQLite
+[4] PyPDF2 Documentation. https://pypdf2.readthedocs.io/
 
-PyPDF2
+[5] spaCy Documentation. https://spacy.io/
 
-pdfplumber
+[6] Tesseract OCR Documentation. https://tesseract-ocr.github.io/
 
-spaCy
+[7] Ollama Documentation. https://ollama.com/
 
-Tesseract OCR
+[8] Python Software Foundation. https://www.python.org/
 
-Pillow
+[9] Pillow Documentation. https://pillow.readthedocs.io/
 
-Ollama
+[10] Jurafsky, D., & Martin, J. H., *Speech and Language Processing*, Pearson Education.
 
-VS Code
+---
 
-7. Hardware Requirements
-Minimum
-Intel Core i3 Processor
+# Author
 
-4 GB RAM
+**Nayan Shankar Banarase**
 
-10 GB Free Storage
+Master of Computer Applications (MCA)
 
-Recommended
-Intel Core i5/i7
+Project: AI Contract Risk Detector
 
-8 GB RAM
-
-SSD Storage
-
-8. Features
-PDF Contract Upload
-
-OCR Support for Scanned Contracts
-
-Automatic Text Extraction
-
-AI-Based Contract Summary
-
-Risk Clause Detection
-
-Hidden Fee Detection
-
-Deadline Identification
-
-Risk Score Calculation
-
-SQLite Database Storage
-
-Interactive React Dashboard
-
-9. Applications
-Law Firms
-
-Business Organizations
-
-HR Departments
-
-Procurement Teams
-
-Financial Institutions
-
-Insurance Companies
-
-Government Offices
-
-10. Advantages
-Reduces manual effort
-
-Faster contract analysis
-
-Identifies risky clauses
-
-Supports scanned documents
-
-Generates AI-powered summaries
-
-Easy-to-use interface
-
-Free and open-source technologies
-
-11. Limitations
-Current risk detection mainly uses predefined rules.
-
-Accuracy depends on document quality.
-
-AI-generated summaries depend on the selected LLM.
-
-SQLite is suitable for small to medium deployments.
-
-12. Future Scope
-The project can be enhanced by incorporating advanced Machine Learning models for intelligent risk prediction instead of rule-based analysis. Future versions may include multilingual contract support, cloud deployment, user authentication, contract comparison, semantic search using vector databases, Retrieval-Augmented Generation (RAG) based contract chatbot, digital signature verification, and integration with enterprise contract management systems.
-
-13. Conclusion
-The AI Contract Risk Detector demonstrates how Artificial Intelligence, Natural Language Processing, OCR, and modern web technologies can automate legal contract analysis. The system reduces the time required for manual review by identifying risky clauses, extracting important information, generating AI-powered summaries, and maintaining contract records. The project serves as a practical and scalable solution for intelligent document analysis while providing a strong foundation for future AI-driven legal technologies.
-
-References
-FastAPI Documentation. https://fastapi.tiangolo.com/
-
-React.js Documentation. https://react.dev/
-
-SQLite Documentation. https://www.sqlite.org/docs.html
-
-PyPDF2 Documentation. https://pypdf2.readthedocs.io/
-
-spaCy Documentation. https://spacy.io/
-
-Tesseract OCR Documentation. https://tesseract-ocr.github.io/
-
-Ollama Documentation. https://ollama.com/
-
-Python Software Foundation. https://www.python.org/
-
-Pillow Documentation. https://pillow.readthedocs.io/
-
-Jurafsky, D., & Martin, J. H. Speech and Language Processing. Pearson Education
+Year: 2026
